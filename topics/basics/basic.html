@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/topics/basics/basic.css">
+
+    <script src="/topics/basics/basic.js"></script>
+
+    <title>Basic</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="/topics/basics/basic.html">Basics</a>
+        <a href="/topics/Arrays/array.html">Arrays</a>
+    </nav>
+    <div class="sidebar">
+        <div class="btns">
+            <button id="1" class="btn" onclick="displayFunction(this.id)">
+                Hello World
+            </button>
+            <button id="2" class="btn" onclick="displayFunction(this. id)">
+                Use strict
+            </button>
+            <button id="3" class="btn" onclick="displayFunction(this. id)">
+                Variables
+            </button>
+            <button id="4" class="btn" onclick="displayFunction(this. id)">
+                Data types
+            </button>
+            <button id="5" class="btn" onclick="displayFunction(this. id)">
+                Type Conversions
+            </button>
+        </div>
+        <div class="show">
+            <div id="main">
+                <!-- Hello World -->
+                <div id="one">
+                    <code>
+                        console.log("hello world");
+                    </code>
+                </div>
+                <!-- Use Strict -->
+                <div id="two">
+                    <pre>
+                        <code>
+                            x = 3.14;       // This will not cause an error.
+                            myFunction();
+                            function myFunction() {
+                                "use strict";
+                                y = 3.14;   // This will cause an error
+                            }
+                        </code>
+                    </pre>
+                </div>
+                <!-- Variables -->
+                <div id="three">
+                    <pre>
+                        <code>
+                            let message;
+                            message = 'Hello!';
+                            var message1 = 'Hello';
+                            const message2 = 'Hello';
+                            message2 = 'world' // this cause an error in const 
+                        </code>
+                    </pre>
+                </div>
+                <!-- Data types -->
+                <div id="four">
+                    <pre>
+                        <code>
+                            let message = "hello";
+                            message = 123456;
+                            alert( 1 / 0 ); // Infinity
+                            alert( Infinity ); // Infinity
+                            alert( "not a number" / 2 ); // NaN, such division is erroneous
+                            alert( NaN + 1 ); // NaN
+                            alert( 3 * NaN ); // NaN
+                            alert( "not a number" / 2 - 1 ); // NaN
+                        </code>
+                    </pre>
+                </div>
+            <!-- Type Conversions -->
+                <div id="five">
+                    <pre>
+                        <code>
+                            let value = true;
+                            alert(typeof value); // boolean
+                            value = String(value); // now value is a string "true"
+                            alert(typeof value); // string
+                            alert( "6" / "2" ); // 3, strings are converted to numbers
+                            let str = "123";
+                            alert(typeof str); // string
+                            let num = Number(str); // becomes a number 123
+                            alert(typeof num); // number
+                        </code>
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/topics/Arrays/array.css">
+
+    <script src="/topics/Arrays/array.js"></script>
+
+    <title>Basic</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="/topics/basics/basic.html">Basics</a>
+        <a href="/topics/Arrays/array.html">Arrays</a>
+    </nav>
+    <div class="sidebar">
+        <div class="btns">
+            <button id="1" class="btn" onclick="displayFunction(this.id)">
+                Arrays
+            </button>
+            <button id="2" class="btn" onclick="displayFunction(this. id)">
+                Array Methods
+            </button>
+            <button id="3" class="btn" onclick="displayFunction(this. id)">
+                Iterables
+            </button>
+            <button id="4" class="btn" onclick="displayFunction(this. id)">
+                Map and Set
+            </button>
+            <button id="5" class="btn" onclick="displayFunction(this. id)">
+                WeakMap and WeakSet
+            </button>
+        </div>
+        <div class="show">
+            <div id="main">
+                <!-- Arrays -->
+                <div id="one">
+                    <code>
+                        let arr = new Array();
+                        let arr = [];
+                        let fruits = ["Apple", "Orange", "Plum"];
+                        alert( fruits[0] ); // Apple
+                        alert( fruits[1] ); // Orange
+                        alert( fruits[2] ); // Plum
+                        //We can replace an element:
+                        fruits[2] = 'Pear'; // now ["Apple", "Orange", "Pear"]
+                        alert( fruits.length ); // 3
+                        // mix of values
+                        let arr = [ 'Apple', { name: 'John' }, true, function() { alert('hello'); } ];
+                        // get the object at index 1 and then show its name
+                        alert( arr[1].name ); // John
+                        // get the function at index 3 and run it
+                        arr[3](); // hello
+                    </code>
+                </div>
+                <!-- Array Methods -->
+                <div id="two">
+                    <pre>
+                        <code>
+                            let arr = ["I", "go", "home"];
+                            delete arr[1]; // remove "go"
+                            alert( arr[1] ); // undefined
+                            // now arr = ["I",  , "home"];
+                            alert( arr.length ); // 3
+                            //splice
+                            let arr = ["I", "study", "JavaScript"];
+                            arr.splice(1, 1); // from index 1 remove 1 element
+                            alert( arr ); // ["I", "JavaScript"]
+                            let arr = ["I", "study", "JavaScript", "right", "now"];
+                            // remove 3 first elements and replace them with another
+                            arr.splice(0, 3, "Let's", "dance");
+                            alert( arr ) // now ["Let's", "dance", "right", "now"]
+                            let arr = ["I", "study", "JavaScript", "right", "now"];
+                            // remove 2 first elements
+                            let removed = arr.splice(0, 2);
+                            alert( removed ); // "I", "study" <-- array of removed elements
+                        </code>
+                    </pre>
+                </div>
+                <!-- Iterables -->
+                <div id="three">
+                    <pre>
+                        <code>
+                            let range = {
+                                from: 1,
+                                to: 5,
+                              
+                                [Symbol.iterator]() {
+                                  this.current = this.from;
+                                  return this;
+                                },
+                              
+                                next() {
+                                  if (this.current <= this.to) {
+                                    return { done: false, value: this.current++ };
+                                  } else {
+                                    return { done: true };
+                                  }
+                                }
+                              };
+                              
+                              for (let num of range) {
+                                alert(num); // 1, then 2, 3, 4, 5
+                              }
+                              for (let char of "test") {
+                                // triggers 4 times: once for each character
+                                alert( char ); // t, then e, then s, then t
+                              }
+                        </code>
+                    </pre>
+                </div>
+                <!-- Maps and sets -->
+                <div id="four">
+                    <pre>
+                        <code>
+                            let map = new Map();
+
+                            map.set('1', 'str1');   // a string key
+                            map.set(1, 'num1');     // a numeric key
+                            map.set(true, 'bool1'); // a boolean key
+                                                    
+                            // remember the regular Object? it would convert keys to string
+                            // Map keeps the type, so these two are different:
+                            alert( map.get(1)   ); // 'num1'
+                            alert( map.get('1') ); // 'str1'
+                                                    
+                            alert( map.size ); // 3
+                            Iteration over Map
+                            let recipeMap = new Map([
+                              ['cucumber', 500],
+                              ['tomatoes', 350],
+                              ['onion',    50]
+                            ]);
+
+                            // iterate over keys (vegetables)
+                            for (let vegetable of recipeMap.keys()) {
+                              alert(vegetable); // cucumber, tomatoes, onion
+                            }
+
+                            // iterate over values (amounts)
+                            for (let amount of recipeMap.values()) {
+                              alert(amount); // 500, 350, 50
+                            }
+
+                            // iterate over [key, value] entries
+                            for (let entry of recipeMap) { // the same as of recipeMap.entries()
+                              alert(entry); // cucumber,500 (and so on)
+                            }
+                        </code>
+                    </pre>
+                </div>
+            <!-- WeakMap and WeakSet -->
+                <div id="five">
+                    <pre>
+                        <code>
+                            let john = { name: "John" };
+
+                            // the object can be accessed, john is the reference to it
+                                                    
+                            // overwrite the reference
+                            john = null;
+                                                    
+                            // the object will be removed from memory
+                            //WeakMap
+                            let weakMap = new WeakMap();
+
+                            let obj = {};
+
+                            weakMap.set(obj, "ok"); // works fine (object key)
+
+                            // can't use a string as the key
+                            weakMap.set("test", "Whoops"); // Error, because "test" is not an object
+                        </code>
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
