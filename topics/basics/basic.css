@@ -43,3 +43,6 @@ nav{
     color: aqua;
     background-color: blue;
 }
+#main{
+    display: none;
+}
